@@ -1,0 +1,19 @@
+this._s=this._s||{};(function(_){var window=this;
+try{
+_.wf(_.ir);
+}catch(e){_._DumpException(e)}
+try{
+var RGb=[1,2],TGb=function(a,b,c){a.Ea===0&&(b?a.Na=_.Ee(a.Ca.get().document.body,"mousedown",d=>{SGb(a,d)},!0):(_.GGa&&(a.Pa=_.Ee(a.Ca.get().document.body,"touchstart",d=>{SGb(a,d)&&!c&&(d.stopPropagation(),d.preventDefault())},{capture:!0,passive:!1})),a.Fa=_.Ee(a.Ca.get().document.body,"click",d=>{SGb(a,d)},!0)));a.Ea++},XGb=function(a){a.Ya||(a.Ya=a.Ba.getEventTarget().listen("FWkcec",b=>{if(a.oa){var c=a.Ba.getState();if(c)if(Number(c.id)===Number(a.oa.historyId))a.oa.Mvb();else for(const d of a.Aa.values())d.eventTypes.has(4)&&
+UGb(a,d,4,void 0,b)}else if(b=VGb(a))if(c=a.Va.get(b))a.Va.delete(b),WGb(a,c)}))},YGb=function(a,b,c,d){a.oa&&!a.oa.listener&&(a.oa.listener=b);var e=a.Ba.getState().id;a.oa&&a.oa.listener.element===b.element&&a.oa.historyId===e||a.Da!==0||(e=a.Ba.getState(),d=Object.assign({},e?e.userData:void 0,{C7c:d}),a.Ba.pushAsync(void 0,d).then(f=>{a.oa={historyId:f,Mvb:c,listener:b}}))},ZGb=function(a,b,c=!0){a.Aa.delete(_.Ae(b.element))&&(b.eventTypes.has(1)&&(a.Ea--,a.Ea===0&&(a.Na?(_.Bn(a.Na),a.Na=null):
+(a.Pa&&(_.Bn(a.Pa),a.Pa=null),a.Fa&&(_.Bn(a.Fa),a.Fa=null)))),b.eventTypes.has(2)&&(a.Ma--,a.Ma===0&&(_.Bn(a.Ua),a.Ua=null)),b.eventTypes.has(3)&&(a.Ka--,a.Ka===0&&(_.Bn(a.Qa),a.Qa=null)),b.eventTypes.has(4)&&(a.Da--,a.Da===0&&c&&a.Ba.pop(a.oa.historyId)))},UGb=function(a,b,c,d,e){let f;try{f=b.onDismiss(c,d,e)}catch(g){_.ea(g)}d=f===!1;d||(c=b.eventTypes.has(4)&&c!==4,ZGb(a,b,c));return!d},SGb=function(a,b){const c=b.target;for(const d of[...a.Aa.values()].reverse())if(d.eventTypes.has(1)){if(!_.dg(d.element,
+c)&&UGb(a,d,1,c,b))return!0;break}return!1},VGb=function(a){return(a=a.Ba.getState())&&(a=a.userData)&&a.C7c?a.C7c:null},WGb=function(a,b){a.oa={historyId:a.Ba.getState().id,Mvb:b,listener:null};b()},$Gb=class extends _.Ro{static Ra(){return{service:{window:_.So,history:_.Pu}}}constructor(a){super();this.Ca=a.service.window;this.Ba=a.service.history;this.Aa=new Map;this.Ea=0;this.Na=this.Pa=this.Fa=null;this.Ma=0;this.Ua=null;this.Ka=0;this.Qa=null;this.Da=0;this.oa=this.Ya=null;this.Va=new Map}listen(a,
+b,c=RGb,d=!1,e=!1,f=!1,g,h){const k=_.Ae(a);c=new Set(c);if(e)this.unlisten(a);else if(this.Aa.has(k))throw Error("bf");this.Aa.set(k,{element:a,onDismiss:b,eventTypes:c});c.has(1)&&TGb(this,d,f);c.has(2)&&(this.Ma===0&&(this.Ua=_.Ee(this.Ca.get().document.body,"keydown",l=>{if(l.keyCode===27){for(const n of this.Aa.values())n.eventTypes.has(2)&&UGb(this,n,2,void 0,l);l.stopPropagation();l.preventDefault()}return f},!0)),this.Ma++);c.has(3)&&(this.Ka===0&&(this.Qa=_.Ee(this.Ca.get().document.body,
+"focus",l=>{const n=l.target;for(const q of this.Aa.values())!q.eventTypes.has(3)||_.yf(n)&&n.nodeType>0&&_.dg(q.element,n)||UGb(this,q,3,n,l);return f},!0)),this.Ka++);c.has(4)&&(XGb(this),a=this.Aa.get(k),YGb(this,a,g,h),this.Da++)}unlisten(a){(a=this.Aa.get(_.Ae(a)))&&ZGb(this,a)}dismiss(a){(a=this.Aa.get(_.Ae(a)))&&UGb(this,a,0)}hasListener(a){return this.Aa.has(_.Ae(a))}Xa(a,b){XGb(this);VGb(this)===b?WGb(this,a):this.Va.set(b,a)}};_.To(_.NXa,$Gb);
+}catch(e){_._DumpException(e)}
+try{
+_.v("MkHyGd");
+
+_.w();
+}catch(e){_._DumpException(e)}
+})(this._s);
+// Google Inc.

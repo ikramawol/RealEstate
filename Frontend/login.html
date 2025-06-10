@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexahomes - Login & Payment</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary-color: #1a242f;
+        --secondary-color: #f8f9fa;
+      }
+
+      body {
+        font-family: "Nunito Sans", sans-serif;
+        background: linear-gradient(rgba(26, 36, 47, 0.7), rgba(26, 36, 47, 0.8)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      .auth-container {
+        max-width: 500px;
+        margin: 5rem auto;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 10;
+        backdrop-filter: blur(10px);
+        animation: slideInUp 0.8s ease-out;
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .payment-container {
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 10;
+        backdrop-filter: blur(10px);
+        animation: slideInUp 0.8s ease-out;
+      }
+
+      .brand-logo {
+        height: 50px;
+        margin-bottom: 1.5rem;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+      }
+
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+
+      .btn-primary:hover {
+        background-color: #0f1620;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(26, 36, 47, 0.4);
+      }
+
+      .btn-outline-primary {
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+        transition: all 0.3s ease;
+      }
+
+      .btn-outline-primary:hover {
+        background-color: var(--primary-color);
+        color: white;
+        transform: translateY(-1px);
+      }
+
+      .form-control {
+        transition: all 0.3s ease;
+        border: 2px solid #e9ecef;
+      }
+
+      .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.25rem rgba(26, 36, 47, 0.25);
+        transform: translateY(-1px);
+      }
+
+      .nav-tabs .nav-link {
+        transition: all 0.3s ease;
+      }
+
+      .nav-tabs .nav-link.active {
+        color: var(--primary-color);
+        font-weight: bold;
+        transform: translateY(-2px);
+      }
+
+      /* Hide payment section initially */
+      #payment-section {
+        display: none;
+      }
+
+      /* Navigation styling */
+      .site-header {
+        background-color: var(--primary-color);
+        position: relative;
+        z-index: 100;
+      }
+
+      .navbar-dark .navbar-nav .nav-link {
+        color: rgba(255, 255, 255, 0.8);
+        transition: all 0.3s ease;
+      }
+
+      .navbar-dark .navbar-nav .nav-link:hover {
+        color: white;
+        transform: translateY(-1px);
+      }
+
+      /* Back link styling */
+      .back-link {
+        color: var(--primary-color);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        backdrop-filter: blur(10px);
+      }
+
+      .back-link:hover {
+        color: var(--primary-color);
+        text-decoration: none;
+        transform: translateX(-5px);
+        background: rgba(255, 255, 255, 1);
+      }
+
+      .back-link i {
+        transition: transform 0.3s ease;
+      }
+
+      .back-link:hover i {
+        transform: translateX(-3px);
+      }
+
+      /* Form animations */
+      .form-input {
+        animation: fadeInLeft 0.6s ease-out;
+      }
+
+      .form-input:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+
+      .form-input:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+
+      .form-input:nth-child(4) {
+        animation-delay: 0.3s;
+      }
+
+      @keyframes fadeInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Footer styling */
+      footer {
+        background-color: var(--primary-color) !important;
+        position: relative;
+        z-index: 10;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .auth-container, .payment-container {
+          margin: 2rem auto;
+          padding: 1.5rem;
+        }
+        
+        .floating-shape {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main Content (with padding for fixed nav) -->
+    <main style="padding-top: 20px">
+      <div class="container">
+        <!-- Login/Signup Section -->
+        <div id="auth-section" class="auth-container">
+          <a href="index.html" class="back-link">
+            <i class="bi bi-arrow-left me-2"></i> Back to Home
+          </a>
+
+          <div class="text-center mb-4">
+            <img
+              src="./assets/images/logo/logo1.png"
+              class="brand-logo"
+              alt="Nexahomes Logo"
+              style="height: 100px; width: auto;"
+
+            />
+            <h2>Welcome to Nexahomes</h2>
+            <p class="text-muted">
+              Sign in to access your account or browse properties
+            </p>
+          </div>
+
+          <div class="tabs-listing mt-4">
+            <nav>
+              <div
+                class="nav nav-tabs d-flex justify-content-center border-0"
+                id="nav-tab"
+                role="tablist"
+              >
+                <button
+                  class="btn btn-outline-primary text-uppercase me-3 active"
+                  id="nav-sign-in-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-sign-in"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-sign-in"
+                  aria-selected="true"
+                >
+                  Log In
+                </button>
+                <button
+                  class="btn btn-outline-primary text-uppercase"
+                  id="nav-register-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-register"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-register"
+                  aria-selected="false"
+                >
+                  Sign Up
+                </button>
+              </div>
+            </nav>
+
+            <div class="tab-content mt-4" id="nav-tabContent">
+              <div
+                class="tab-pane fade show active"
+                id="nav-sign-in"
+                role="tabpanel"
+                aria-labelledby="nav-sign-in-tab"
+              >
+                <form id="login-form" class="form-group flex-wrap">
+                  <div class="form-input col-12 mb-3">
+                    <label
+                      for="login-email"
+                      class="form-label fs-6 text-uppercase fw-bold"
+                      >Email Address</label
+                    >
+                    <input
+                      type="email"
+                      id="login-email"
+                      name="email"
+                      placeholder="Email"
+                      class="form-control ps-3"
+                      required
+                    />
+                  </div>
+                  <div class="form-input col-12 mb-3">
+                    <label
+                      for="login-password"
+                      class="form-label fs-6 text-uppercase fw-bold"
+                      >Password</label
+                    >
+                    <input
+                      type="password"
+                      id="login-password"
+                      placeholder="Password"
+                      class="form-control ps-3"
+                      aria-describedby="passwordHelpBlock"
+                      required
+                    />
+                    <div id="passwordHelpBlock" class="form-text text-end">
+                      <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#resetPasswordModal"
+                        >Forgot Password?</a
+                      >
+                    </div>
+                  </div>
+                  <div class="form-check mb-3">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="rememberMe"
+                    />
+                    <label class="form-check-label" for="rememberMe"
+                      >Remember Me</label
+                    >
+                  </div>
+                  <div class="d-grid">
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-lg text-uppercase fs-6"
+                    >
+                      Log In
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <div
+                class="tab-pane fade"
+                id="nav-register"
+                role="tabpanel"
+                aria-labelledby="nav-register-tab"
+              >
+                <form id="register-form" class="form-group flex-wrap">
+                  <div class="form-input col-12 mb-3">
+                    <label
+                      for="register-name"
+                      class="form-label fs-6 text-uppercase fw-bold"
+                      >User name</label
+                    >
+                    <input
+                      type="text"
+                      id="register-name"
+                      name="name"
+                      placeholder="User Name"
+                      class="form-control ps-3"
+                      required
+                    />
+                  </div>
+                  <div class="form-input col-12 mb-3">
+                    <label
+                      for="register-email"
+                      class="form-label fs-6 text-uppercase fw-bold"
+                      >Email Address</label
+                    >
+                    <input
+                      type="email"
+                      id="register-email"
+                      name="email"
+                      placeholder="Email"
+                      class="form-control ps-3"
+                      required
+                    />
+                  </div>
+                  <div class="form-input col-12 mb-3">
+                    <label
+                      for="register-password"
+                      class="form-label fs-6 text-uppercase fw-bold"
+                      >Password</label
+                    >
+                    <input
+                      type="password"
+                      id="register-password"
+                      placeholder="Password"
+                      class="form-control ps-3"
+                      required
+                    />
+                  </div>
+                  <div class="form-input col-12 mb-3">
+                    <label
+                      for="confirm-password"
+                      class="form-label fs-6 text-uppercase fw-bold"
+                      >Confirm Password</label
+                    >
+                    <input
+                      type="password"
+                      id="confirm-password"
+                      placeholder="Confirm Password"
+                      class="form-control ps-3"
+                      required
+                    />
+                  </div>
+                  <div class="form-check mb-3">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="agreeTerms"
+                      required
+                    />
+                    <label class="form-check-label" for="agreeTerms">
+                      I agree to the
+                      <a href="#" class="text-decoration-none"
+                        >Terms of Service</a
+                      >
+                      and
+                      <a href="#" class="text-decoration-none"
+                        >Privacy Policy</a
+                      >
+                    </label>
+                  </div>
+                  <div class="d-grid">
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-lg text-uppercase fs-6"
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Section (Initially hidden) -->
+        <div id="payment-section" class="payment-container">
+          <a href="#" id="back-to-login" class="back-link">
+            <i class="bi bi-arrow-left me-2"></i> Back to Account
+          </a>
+
+          <h2 class="text-center mb-4">Complete Your Payment</h2>
+
+          <div class="mb-4">
+            <h5>
+              Property: <span id="property-title">Villa House in Bole</span>
+            </h5>
+            <h5>Amount: <span id="payment-amount">ETB 5,000,000</span></h5>
+          </div>
+
+          <form id="payment-form">
+            <div class="form-input mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="payment-email"
+                required
+              />
+            </div>
+
+            <div class="form-input mb-3">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="payment-phone"
+                required
+              />
+            </div>
+
+            <div class="form-input mb-3">
+              <label for="first-name" class="form-label">First Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="payment-first-name"
+                required
+              />
+            </div>
+
+            <div class="form-input mb-3">
+              <label for="last-name" class="form-label">Last Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="payment-last-name"
+                required
+              />
+            </div>
+
+            <div class="d-grid">
+              <button
+                type="button"
+                class="btn btn-primary btn-lg"
+                id="pay-button"
+              >
+                Pay Now
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!-- Reset Password Modal -->
+    <div class="modal fade" id="resetPasswordModal" tabindex="-1" aria-labelledby="resetPasswordModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="resetPasswordModalLabel">Reset Your Password</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Enter your email address and we'll send you a link to reset your password.</p>
+            <form id="reset-password-form">
+              <div class="mb-3">
+                <label for="reset-email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="reset-email" placeholder="your@email.com" required>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary" id="send-reset-link">Send Reset Link</button>
+              </div>
+            </form>
+            <div class="alert alert-success mt-3 d-none" id="reset-success">
+              Password reset link sent! Please check your email.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Include Chapa's JavaScript SDK -->
+    <script src="https://checkout.chapa.co/checkout.js"></script>
+
+    <script>
+      // DOM Elements
+      const authSection = document.getElementById("auth-section");
+      const paymentSection = document.getElementById("payment-section");
+      const loginForm = document.getElementById("login-form");
+      const registerForm = document.getElementById("register-form");
+      const resetForm = document.getElementById("reset-password-form");
+      const resetSuccess = document.getElementById("reset-success");
+      const payButton = document.getElementById("pay-button");
+      const backToLogin = document.getElementById("back-to-login");
+      const rememberMeCheckbox = document.getElementById("rememberMe");
+
+      // Check if there's a saved email in localStorage
+      const savedEmail = localStorage.getItem('nexahomes_email');
+      if (savedEmail) {
+        document.getElementById('login-email').value = savedEmail;
+        rememberMeCheckbox.checked = true;
+      }
+
+      // Event Listeners
+      loginForm.addEventListener("submit", handleLogin);
+      registerForm.addEventListener("submit", handleRegister);
+      resetForm.addEventListener("submit", handlePasswordReset);
+      payButton.addEventListener("click", initiatePayment);
+      backToLogin.addEventListener("click", showAuthSection);
+
+      // Functions
+      function handleLogin(e) {
+        e.preventDefault();
+        const email = document.getElementById("login-email").value;
+        const password = document.getElementById("login-password").value;
+        const rememberMe = rememberMeCheckbox.checked;
+
+        // Handle "Remember Me" functionality
+        if (rememberMe) {
+          localStorage.setItem('nexahomes_email', email);
+        } else {
+          localStorage.removeItem('nexahomes_email');
+        }
+
+        // In a real app, you would verify credentials with your backend
+        console.log("Login attempt with:", email, password, "Remember me:", rememberMe);
+
+        // For demo purposes, we'll simulate a successful login
+        simulateLoginSuccess();
+      }
+
+      function handleRegister(e) {
+        e.preventDefault();
+        const name = document.getElementById("register-name").value;
+        const email = document.getElementById("register-email").value;
+        const password = document.getElementById("register-password").value;
+        const confirmPassword = document.getElementById("confirm-password").value;
+
+        if (password !== confirmPassword) {
+          alert("Passwords don't match!");
+          return;
+        }
+
+        // In a real app, you would send this to your backend
+        console.log("New user registered:", { name, email });
+
+        // For demo purposes, we'll simulate a successful registration
+        simulateLoginSuccess();
+      }
+
+      function handlePasswordReset(e) {
+        e.preventDefault();
+        const email = document.getElementById("reset-email").value;
+
+        // In a real app, you would send this to your backend
+        console.log("Password reset requested for:", email);
+
+        // Show success message
+        resetSuccess.classList.remove('d-none');
+
+        // Reset form
+        resetForm.reset();
+
+        // Hide success message and close modal after 3 seconds
+        setTimeout(() => {
+          resetSuccess.classList.add('d-none');
+          const modal = bootstrap.Modal.getInstance(document.getElementById('resetPasswordModal'));
+          modal.hide();
+        }, 3000);
+      }
+
+      function simulateLoginSuccess() {
+        // Hide auth section, show payment section
+        authSection.style.display = "none";
+        paymentSection.style.display = "block";
+
+        // Scroll to payment section
+        paymentSection.scrollIntoView({ behavior: "smooth" });
+
+        // In a real app, you would:
+        // 1. Store the auth token
+        // 2. Possibly fetch user data to pre-fill the payment form
+        // 3. Handle any redirect logic
+      }
+
+      function showAuthSection(e) {
+        e.preventDefault();
+        paymentSection.style.display = "none";
+        authSection.style.display = "block";
+        authSection.scrollIntoView({ behavior: "smooth" });
+      }
+
+      function initiatePayment(e) {
+        e.preventDefault();
+
+        const email = document.getElementById("payment-email").value;
+        const phone = document.getElementById("payment-phone").value;
+        const firstName = document.getElementById("payment-first-name").value;
+        const lastName = document.getElementById("payment-last-name").value;
+
+        // Get property details (in a real app, this would come from your system)
+        const propertyTitle = document.getElementById("property-title").textContent;
+        const amountText = document.getElementById("payment-amount").textContent;
+        const amount = parseInt(amountText.replace(/\D/g, "")); // Extract numeric value
+
+        const config = {
+          publicKey: "YOUR_CHAPA_PUBLIC_KEY", // Replace with your public key
+          tx_ref: "nexahomes-" + Date.now(), // Unique reference
+          amount: amount,
+          currency: "ETB",
+          email: email,
+          first_name: firstName,
+          last_name: lastName,
+          phone_number: phone,
+          title: "Nexahomes Property Payment",
+          description: `Payment for ${propertyTitle}`,
+          callback: function (response) {
+            console.log("Payment callback:", response);
+            verifyPayment(response.transaction_id);
+          },
+          onClose: function () {
+            console.log("Payment modal closed");
+          },
+        };
+
+        const chapa = new Chapa(config);
+        chapa.open();
+      }
+
+      function verifyPayment(transactionId) {
+        // In a real app, this would call your backend to verify the payment
+        console.log("Verifying payment with transaction ID:", transactionId);
+
+        // Simulate verification (replace with actual API call)
+        setTimeout(() => {
+          alert("Payment successful! Thank you for your purchase.");
+          // In a real app, you would redirect to a success page or update UI
+        }, 1500);
+      }
+    </script>
+  </body>
+</html>

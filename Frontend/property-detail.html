@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Single Property | Nexahomes</title>
+
+    <link rel="stylesheet" type="text/css" href="css/vendor.css" />
+
+    <link
+      rel="shortcut icon"
+      href="./assets/images/logo/logo1.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+
+    <!-- Link Bootstrap's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!-- Google Fonts ================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- script ================================================== -->
+    <script src="./assets/js/modernizr.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <style>
+      /* Property categories styling */
+      .property-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .property-categories .badge {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+        font-weight: 500;
+      }
+
+      .price-tag {
+        background-color: #0d6efd;
+      }
+
+      /* Swiper gallery styling */
+      .swiper {
+        width: 100%;
+        height: 400px;
+        margin-bottom: 2rem;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+
+      .swiper-button-next:after,
+      .swiper-button-prev:after {
+        font-size: 1.2rem;
+      }
+
+      .swiper-pagination-bullet-active {
+        background: #0d6efd;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ***** Header Area Start ***** -->
+    <!-- nav bar start  -->
+    <header id="nav" class="site-header position-fixed text-white bg-dark">
+      <nav id="navbar-example2" class="navbar navbar-expand-lg py-2">
+        <div class="container">
+          <a class="navbar-brand" href="./index.html"
+            ><img
+              src="./assets/images/logo/logo3.png"
+              class="brand-logo"
+              alt="brand logo"
+          /></a>
+
+          <button
+            class="navbar-toggler text-white"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar2"
+            aria-controls="offcanvasNavbar2"
+            aria-label="Toggle navigation"
+          >
+            <ion-icon name="menu-outline" style="font-size: 30px"></ion-icon>
+          </button>
+
+          <div
+            class="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="offcanvasNavbar2"
+            aria-labelledby="offcanvasNavbar2Label"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbar2Label">Menu</h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul
+                class="navbar-nav align-items-center justify-content-end align-items-center flex-grow-1"
+              >
+                <li class="nav-item">
+                  <a class="nav-link active me-md-4" href="./index.html"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-md-4" href="./properties.html"
+                    >Properties</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-md-4" href="./about.html">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-md-4" href="./contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-md-4" href="./blog.html">Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="login.html">Login</a>
+                </li>
+
+                <li class="nav-item">
+                  <a
+                    class="nav-link mx-md-4"
+                    href="#"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                  ></a>
+                </li>
+
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="tabs-listing mt-4">
+                          <nav>
+                            <div
+                              class="nav nav-tabs d-flex justify-content-center border-0"
+                              id="nav-tab"
+                              role="tablist"
+                            >
+                              <button
+                                class="btn btn-outline-primary text-uppercase me-3 active"
+                                id="nav-sign-in-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#nav-sign-in"
+                                type="button"
+                                role="tab"
+                                aria-controls="nav-sign-in"
+                                aria-selected="true"
+                              >
+                                Log In
+                              </button>
+                              <button
+                                class="btn btn-outline-primary text-uppercase"
+                                id="nav-register-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#nav-register"
+                                type="button"
+                                role="tab"
+                                aria-controls="nav-register"
+                                aria-selected="false"
+                              >
+                                Sign Up
+                              </button>
+                            </div>
+                          </nav>
+                          <div class="tab-content" id="nav-tabContent">
+                            <div
+                              class="tab-pane fade active show"
+                              id="nav-sign-in"
+                              role="tabpanel"
+                              aria-labelledby="nav-sign-in-tab"
+                            >
+                              <form id="form1" class="form-group flex-wrap p-3">
+                                <div class="form-input col-lg-12 my-4">
+                                  <label
+                                    for="exampleInputEmail1"
+                                    class="form-label fs-6 text-uppercase fw-bold text-black"
+                                    >Email Address</label
+                                  >
+                                  <input
+                                    type="text"
+                                    id="exampleInputEmail1"
+                                    name="email"
+                                    placeholder="Email"
+                                    class="form-control ps-3"
+                                  />
+                                </div>
+                                <div class="form-input col-lg-12 my-4">
+                                  <label
+                                    for="inputPassword1"
+                                    class="form-label fs-6 text-uppercase fw-bold text-black"
+                                    >Password</label
+                                  >
+                                  <input
+                                    type="password"
+                                    id="inputPassword1"
+                                    placeholder="Password"
+                                    class="form-control ps-3"
+                                    aria-describedby="passwordHelpBlock"
+                                  />
+                                  <div
+                                    id="passwordHelpBlock"
+                                    class="form-text text-center"
+                                  >
+                                    <a href="#" class="password"
+                                      >Forgot Password ?</a
+                                    >
+                                  </div>
+                                </div>
+                                <label class="py-3">
+                                  <input
+                                    type="checkbox"
+                                    required=""
+                                    class="d-inline"
+                                  />
+                                  <span class="label-body text-black"
+                                    >Remember Me</span
+                                  >
+                                </label>
+                                <div class="d-grid my-3">
+                                  <button
+                                    class="btn btn-primary btn-lg btn-dark text-uppercase btn-rounded-none fs-6"
+                                  >
+                                    Log In
+                                  </button>
+                                </div>
+                              </form>
+                            </div>
+                            <div
+                              class="tab-pane fade"
+                              id="nav-register"
+                              role="tabpanel"
+                              aria-labelledby="nav-register-tab"
+                            >
+                              <form id="form2" class="form-group flex-wrap p-3">
+                                <div class="form-input col-lg-12 my-4">
+                                  <label
+                                    for="exampleInputEmail2"
+                                    class="form-label fs-6 text-uppercase fw-bold text-black"
+                                    >Email Address</label
+                                  >
+                                  <input
+                                    type="text"
+                                    id="exampleInputEmail2"
+                                    name="email"
+                                    placeholder="Email"
+                                    class="form-control ps-3"
+                                  />
+                                </div>
+                                <div class="form-input col-lg-12 my-4">
+                                  <label
+                                    for="inputPassword2"
+                                    class="form-label fs-6 text-uppercase fw-bold text-black"
+                                    >Password</label
+                                  >
+                                  <input
+                                    type="password"
+                                    id="inputPassword2"
+                                    placeholder="Password"
+                                    class="form-control ps-3"
+                                    aria-describedby="passwordHelpBlock"
+                                  />
+                                </div>
+                                <label class="py-3">
+                                  <input
+                                    type="checkbox"
+                                    required=""
+                                    class="d-inline"
+                                  />
+                                  <span class="label-body text-black"
+                                    >I agree to the
+                                    <a
+                                      href="#"
+                                      class="text-black password border-bottom"
+                                      >Privacy Policy</a
+                                    >
+                                  </span>
+                                </label>
+                                <div class="d-grid my-3">
+                                  <button
+                                    class="btn btn-primary btn-lg btn-dark text-uppercase btn-rounded-none fs-6"
+                                  >
+                                    Sign Up
+                                  </button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <li class="nav-item">
+                  <a
+                    class="btn-medium btn btn-primary"
+                    href="#"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal2"
+                    >Sign Up</a
+                  >
+                </li>
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="exampleModal2"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="tabs-listing mt-4">
+                          <nav>
+                            <div
+                              class="nav nav-tabs d-flex justify-content-center border-0"
+                              id="nav-tab2"
+                              role="tablist"
+                            >
+                              <button
+                                class="btn btn-outline-primary text-uppercase me-4"
+                                id="nav-sign-in-tab2"
+                                data-bs-toggle="tab"
+                                data-bs-target="#nav-sign-in2"
+                                type="button"
+                                role="tab"
+                                aria-controls="nav-sign-in2"
+                                aria-selected="false"
+                              >
+                                Log In
+                              </button>
+                              <button
+                                class="btn btn-outline-primary text-uppercase active"
+                                id="nav-register-tab2"
+                                data-bs-toggle="tab"
+                                data-bs-target="#nav-register2"
+                                type="button"
+                                role="tab"
+                                aria-controls="nav-register2"
+                                aria-selected="true"
+                              >
+                                Sign Up
+                              </button>
+                            </div>
+                          </nav>
+                          <div class="tab-content" id="nav-tabContent1">
+                            <div
+                              class="tab-pane fade"
+                              id="nav-sign-in2"
+                              role="tabpanel"
+                              aria-labelledby="nav-sign-in-tab2"
+                            >
+                              <form id="form3" class="form-group flex-wrap p-3">
+                                <div class="form-input col-lg-12 my-4">
+                                  <label
+                                    for="exampleInputEmail3"
+                                    class="form-label fs-6 text-uppercase fw-bold text-black"
+                                    >Email Address</label
+                                  >
+                                  <input
+                                    type="text"
+                                    id="exampleInputEmail3"
+                                    name="email"
+                                    placeholder="Email"
+                                    class="form-control ps-3"
+                                  />
+                                </div>
+                                <div class="form-input col-lg-12 my-4">
+                                  <label
+                                    for="inputPassword3"
+                                    class="form-label fs-6 text-uppercase fw-bold text-black"
+                                    >Password</label
+                                  >
+                                  <input
+                                    type="password"
+                                    id="inputPassword3"
+                                    placeholder="Password"
+                                    class="form-control ps-3"
+                                    aria-describedby="passwordHelpBlock"
+                                  />
+                                  <div
+                                    id="passwordHelpBlock2"
+                                    class="form-text text-center"
+                                  >
+                                    <a href="#" class="password"
+                                      >Forgot Password ?</a
+                                    >
+                                  </div>
+                                </div>
+                                <label class="py-3">
+                                  <input
+                                    type="checkbox"
+                                    required=""
+                                    class="d-inline"
+                                  />
+                                  <span class="label-body text-black"
+                                    >Remember Me</span
+                                  >
+                                </label>
+                                <div class="d-grid my-3">
+                                  <button
+                                    class="btn btn-primary btn-lg btn-dark text-uppercase btn-rounded-none fs-6"
+                                  >
+                                    Log In
+                                  </button>
+                                </div>
+                              </form>
+                            </div>
+                            <div
+                              class="tab-pane fade active show"
+                              id="nav-register2"
+                              role="tabpanel"
+                              aria-labelledby="nav-register-tab2"
+                            >
+                              <form id="form4" class="form-group flex-wrap p-3">
+                                <div class="form-input col-lg-12 my-4">
+                                  <label
+                                    for="exampleInputEmail4"
+                                    class="form-label fs-6 text-uppercase fw-bold text-black"
+                                    >Email Address</label
+                                  >
+                                  <input
+                                    type="text"
+                                    id="exampleInputEmail4"
+                                    name="email"
+                                    placeholder="Email"
+                                    class="form-control ps-3"
+                                  />
+                                </div>
+                                <div class="form-input col-lg-12 my-4">
+                                  <label
+                                    for="inputPassword4"
+                                    class="form-label fs-6 text-uppercase fw-bold text-black"
+                                    >Password</label
+                                  >
+                                  <input
+                                    type="password"
+                                    id="inputPassword4"
+                                    placeholder="Password"
+                                    class="form-control ps-3"
+                                    aria-describedby="passwordHelpBlock"
+                                  />
+                                </div>
+                                <label class="py-3">
+                                  <input
+                                    type="checkbox"
+                                    required=""
+                                    class="d-inline"
+                                  />
+                                  <span class="label-body text-black"
+                                    >I agree to the
+                                    <a
+                                      href="#"
+                                      class="text-black password border-bottom"
+                                      >Privacy Policy</a
+                                    >
+                                  </span>
+                                </label>
+                                <div class="d-grid my-3">
+                                  <button
+                                    class="btn btn-primary btn-lg btn-dark text-uppercase btn-rounded-none fs-6"
+                                  >
+                                    Sign Up
+                                  </button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- ***** Header Area End ***** -->
+    <!-- page heading banner -->
+    <div class="page-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h3>Apartment</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end of page heading banner -->
+    <!-- single property start  -->
+    <div class="single-property section">
+      <div class="container my-5 py-5">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="main-image">
+              <img
+                src="./assets/images/apaa.png"
+                class="img-fluid rounded"
+                alt=""
+              />
+            </div>
+
+            <div class="main-content">
+              <span class="category">Aparment</span>
+              <span class="category">Price:35,000,000 birr</span>
+              <span class="category"> Buy </span>
+              <h4>Bole, Addis Ababa, Ethiopia</h4>
+              <!-- Swiper gallery -->
+              <div class="swiper property-gallery">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/images/livingroom.jpg"
+                      alt="Living Room"
+                      class="img-fluid rounded"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/images/bedroom.jpg"
+                      alt="Bedroom"
+                      class="img-fluid rounded"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/images/kitchen.jpg"
+                      alt="Kitchen"
+                      class="img-fluid rounded"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="./assets/images/bathroom.jpg"
+                      alt="Bathroom"
+                      class="img-fluid rounded"
+                    />
+                  </div>
+                </div>
+                <!-- Add navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <!-- Add pagination -->
+                <div class="swiper-pagination"></div>
+              </div>
+
+              <p>
+                This beautiful 6-bedroom, 2-bathroom home is located in the
+                heart of Bole, one of Addis Ababa’s most sought-after
+                neighborhoods. Spread across a 1,600 sqft plot, the property
+                offers a spacious layout ideal for large families or shared
+                living. The house features a bright and airy living room, a
+                dining area, and a well-equipped modern kitchen. All bedrooms
+                are generously sized with ample natural light and ventilation.
+                The two bathrooms are neatly tiled with functional fixtures,
+                ensuring comfort for daily living.
+
+                <br /><br />Situated in a peaceful yet well-connected area, this
+                property provides easy access to major roads, shopping malls,
+                international schools, and medical centers. The compound
+                includes secure parking, a small garden area, and high perimeter
+                fencing for privacy and safety. Whether you're looking for a new
+                family home or an investment property, this house in Bole offers
+                both convenience and value in one of Addis Ababa’s premium
+                zones. Estimated Price: 35,000,000 ETB (subject to market
+                fluctuation and finishing quality).
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="info-table">
+              <ul>
+                <li>
+                  <img
+                    src="assets/images/info-icon-01.png"
+                    alt=""
+                    style="max-width: 52px"
+                  />
+                  <h4>1600Sqft<br /><span>Total Flat Space</span></h4>
+                </li>
+                <li>
+                  <img
+                    src="assets/images/info-icon-02.png"
+                    alt=""
+                    style="max-width: 52px"
+                  />
+                  <h4>Contract<br /><span>Contract Ready</span></h4>
+                </li>
+                <li>
+                  <img
+                    src="assets/images/info-icon-03.png"
+                    alt=""
+                    style="max-width: 52px"
+                  />
+                  <h4>Payment<br /><span>Payment Process</span></h4>
+                </li>
+                <li>
+                  <img
+                    src="assets/images/info-icon-04.png"
+                    alt=""
+                    style="max-width: 52px"
+                  />
+                  <h4>Safety<br /><span>24/7 Under Control</span></h4>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer start  -->
+    <section id="footer">
+      <div class="container footer-container">
+        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5">
+          <div class="col-md-4">
+            <h3>
+              <img
+                src="./assets/images/logo/logo3.png"
+                class="brand-logo"
+                alt="image"
+              />
+            </h3>
+            <p>Connecting you to the best properties in town.</p>
+            <i class="bi-facebook pe-4"></i>
+            <i class="bi-instagram pe-4"></i>
+            <i class="bi-twitter pe-4"></i>
+            <i class="bi-youtube pe-4"></i>
+          </div>
+
+          <div class="col-md-2">
+            <h5>Project</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0">Commercial Buildings</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0">Villa</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0"> Apartment</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0">Guest H.</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+            <h5>Enterprise</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0">Our Approach</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0"> Investment </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0">Protection </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+            <h5>Movement</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0">Movement</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0">Support us</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0">Pricing</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+            <h5>Help</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0">Privacy </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0">Condition</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0">Blog</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0">FAQs</a>
+              </li>
+            </ul>
+          </div>
+        </footer>
+      </div>
+
+      <footer
+        class="d-flex flex-wrap justify-content-between align-items-center border-top"
+      ></footer>
+
+      <div class="container">
+        <footer
+          class="d-flex flex-wrap justify-content-between align-items-center py-2"
+        >
+          <div class="col-md-8 d-flex align-items-center">
+            <p>© 2025 NexaHomes, Ethiopia. All rights reserved.</p>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="assets/js/isotope.min.js"></script>
+    <!-- <script src="assets/js/owl-carousel.js"></script> -->
+    <!-- <script src="assets/js/counter.js"></script> -->
+    <!-- <script src="assets/js/custom.js"></script> -->
+    <script src="./assets/js/jquery-1.11.0.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Initialize Swiper
+      const swiper = new Swiper(".property-gallery", {
+        loop: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    </script>
+  </body>
+</html>
